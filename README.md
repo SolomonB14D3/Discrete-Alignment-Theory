@@ -1,16 +1,37 @@
 # DAT 2.0: E₆ Lattice Resilience and Topological Alignment
 
-This repository provides the "Gold Standard" simulation engine for **Dynamic Alignment Theory (DAT) 2.0**. It demonstrates the structural resilience of a 6D E₆ root lattice projected onto a 3D icosahedral manifold.
+> **The "Resonant Snap":** A deterministic proof that 6D E₆ projections autonomously recover icosahedral symmetry from high-entropy states.
 
-## Abstract
-This research presents a deterministic verification of DAT 2.0. Utilizing a damped Hamiltonian framework, we subject an r=7 E₆ lattice (2,442 nodes) to stochastic phason strain. Our results confirm a universal **Topological Snap-back** effect: despite high-magnitude entropy induction driving the spectral exponent into a chaotic regime (β < 0), the system exhibits autonomous realignment with its 6D anchors. Post-strain analysis shows a consistent convergence to a ground-state stasis of β ≈ 3.01, characterized by the formation of **"Frozen Stars"**.
+![Initial Order](Initial_Order.png) | ![Peak Chaos](Peak_Chaos.png) | ![Frozen Stars](Frozen_Stars.png)
+:---: | :---: | :---:
+**1. Initial Ground State** | **2. Peak Phason Strain** | **3. Autonomous Recovery**
 
-## Core Components
-- **dat_gold_standard.py**: The primary engine implementing E₆ root generation and Hamiltonian dynamics.
-- **dat_sweep_analysis.py**: Multi-trial stress test (σ = 0.2, 0.5, 0.8) for verifying resilience.
-- **THEORY.md**: Full mathematical derivation of the embedding and stability analysis.
+---
 
-## Usage
-1. Ensure `torch`, `numpy`, `pandas`, and `scipy` are installed.
-2. Run the sweep: `python dat_sweep_analysis.py`
-3. View results in `DAT_Sweep_Results.png` and `sweep_statistics.csv`.
+## Key Findings
+* **Topological Attractor:** The E₆ root system ($r=7$, 2,442 nodes) acts as a geometric basin of attraction.
+* **Deterministic Realignment:** Systems subjected to stochastic noise exhibit a "Snap-back" effect, realigning to 6D anchors without external correction.
+* **Universal Stasis:** Post-strain analysis shows a consistent convergence to a spectral exponent of **β ≈ 3.01**, characterized by the formation of **"Frozen Stars"**.
+
+## Verify the Results
+To reproduce the $\beta$ convergence and generate the "Frozen Star" gallery:
+
+1. **Clone & Install:**
+   \`\`\`bash
+   git clone https://github.com/SolomonB14D3/DAT-E6-Resilience.git
+   cd DAT-E6-Resilience
+   pip install torch numpy pandas scipy matplotlib
+   \`\`\`
+
+2. **Run the Gold Standard Engine:**
+   \`\`\`bash
+   python dat_gold_standard.py
+   \`\`\`
+
+3. **Analyze the Results:** Check the \`experiment_r7_*/\` folder for generated spectral plots and the icosahedral gallery.
+
+## Mathematical Foundation
+For the full derivation of the damped Hamiltonian framework and the E₆ root system projection onto the icosahedral manifold, see [THEORY.md](THEORY.md).
+
+## License
+This project is licensed under the Apache License 2.0.
