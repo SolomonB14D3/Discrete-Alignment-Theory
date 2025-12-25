@@ -1,20 +1,24 @@
-import torch
+import pandas as pd
 import matplotlib.pyplot as plt
-from dat_gold_standard import DAT_GoldStandard_Engine
+import numpy as np
 
-engine = DAT_GoldStandard_Engine(r=7)
-frames_to_capture = [400, 850, 1500]
-titles = ["Initial_Order", "Peak_Chaos", "Frozen_Stars"]
+# Load the data
+df = pd.read_csv('experiment_r7_20251224_125406/raw_data.csv')
 
-for frame, title in zip(frames_to_capture, titles):
-    noise = 0.8 if frame == 850 else 0.0
-    # Run a few steps to settle if it's the recovery frame
-    proj = engine.apply_hamiltonian_dynamics(noise_level=noise)
-    
-    fig = plt.figure(figsize=(8,8))
-    ax = fig.add_subplot(111, projection='3d')
-    ax.scatter(proj[:,0], proj[:,1], proj[:,2], s=2, alpha=0.6, c=proj[:,2])
-    ax.set_title(f"DAT 2.0 Manifold: {title}")
-    plt.savefig(f"{title}.png")
+def save_plot(frame_idx, filename, title):
+    frame_data = df[df['frame'] == frame_idx]
+    plt.figure(figsize=(6,6), facecolor='black')
+    plt.scatter(frame_data['x'], frame_data['y'], s=1, c='cyan', alpha=0.6)
+    plt.title(title, color='white')
+    plt.axis('off')
+    plt.savefig(filename, facecolor='black')
     plt.close()
-print("Gallery Generated.")
+
+# 1. Initial State (Frame 0)
+save_plot(0, 'Initial_Order.png', 'E6 Ground State')
+# 2. Peak Chaos (Where Beta was lowest/NaN - around Frame 300)
+save_plot(300, 'Peak_Chaos.png', 'Peak Phason Strain (1.5σ)')
+# 3. Frozen Stars (The final stasis - Frame 2900)
+save_plot(2900, 'Frozen_Stars.png', 'Recovered Frozen Stars (β=3.01)')
+
+print("Gallery generated: Initial_Order.png, Peak_Chaos.png, Frozen_Stars.png")
