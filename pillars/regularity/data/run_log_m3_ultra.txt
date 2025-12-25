@@ -1,0 +1,6 @@
+Final Baseline Run: Thu Dec 25 13:24:35 MST 2025
+Hardware: Apple M3 Ultra
+Iterations: 2000/2000
+Total Time: 18:02 (1.85 it/s)
+Result Decimal: Max |ω| = 70.2082, β = -0.0014
+Result Dozenal: Max |ω| = 58.9749, β = -0.0012
