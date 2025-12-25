@@ -18,3 +18,13 @@ dissipates energy via:
 $$\frac{dE}{dt} = -\gamma \|v\|^2 \leq 0$$
 
 This guarantees convergence to the global minimum (Frozen Stars) for any bounded noise $\eta(t)$.
+
+## Appendix B: Scaling Laws for Higher-Dimensional Extensions (DAT 3.0)
+To generalize the "Resonant Snap" to $E_8$ and the Leech Lattice ($\Lambda_{24}$), we implement dimensional scaling to maintain consistent Hamiltonian energy density.
+
+### B.1 Parameter Scaling
+* **Coupling Constant ($k$):** $k \propto \sqrt{d}$ to counteract volume dilution in high-dimensional manifolds.
+* **Damping ($\gamma$):** $\gamma \propto 1/\sqrt{d}$ to ensure efficient dissipation without kinematic freezing.
+
+### B.2 Hypothesis: The Density-Resilience Correlation
+We hypothesize that the recovery to $\beta \approx 3.0$ (Black Noise) is accelerated in higher-rank lattices due to the deeper basins of attraction provided by increased kissing numbers ($N_{E8} = 240$, $N_{\Lambda24} = 196,560$).
