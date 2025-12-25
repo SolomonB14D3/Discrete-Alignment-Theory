@@ -23,4 +23,4 @@ To reproduce the $\beta$ convergence and generate the gallery:
    git clone [https://github.com/SolomonB14D3/DAT-E6-Resilience.git](https://github.com/SolomonB14D3/DAT-E6-Resilience.git)
    cd DAT-E6-Resilience
    pip install -r requirements.txt
-EEOF
+
