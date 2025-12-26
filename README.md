@@ -1,53 +1,37 @@
 # DAT-E6: Resilient Low-Drag Quasicrystalline Lattices
-**Pillar 1: Structural Resilience | Pillar 2: Information Efficiency | Pillar 3: Phase-Space Volume**
+**Pillar 1: Structural | Pillar 2: Information | Pillar 3: Scaling**
 
-This repository validates a new class of computational grids based on icosahedral (quasi-periodic) symmetry. Unlike standard cubic grids, the DAT-E6 lattice exhibits global regularity and near-perfect isotropy, making it resilient to high-entropy shocks and off-axis flow conditions.
+This repository validates a class of computational grids based on icosahedral symmetry. DAT-E6 exhibits global regularity and near-perfect isotropy, making it resilient to high-entropy shocks and off-axis flow conditions.
 
 ---
 
-## Key Validation Metrics
+## 🚀 Key Validation Metrics
 
 | Metric | DAT-E6 (Quasi) | Cubic Standard | Advantage |
 |:--- |:--- |:--- |:--- |
 | **Off-Axis Drag (Cd)** | 0.0020 | 0.0142 | **86% Reduction** |
 | **Info-Recovery (tau)** | 776.25 steps | 191,326.39 steps | **246x Faster** |
-| **Symmetry** | Icosahedral (Ih) | Cartesian (Oh) | **Global Regularity** |
+| **Scaling Cost** | Sub-linear | Linear ($O(N)$) | **Phase-Space Volume** |
 
 ---
 
-## Pillar 1: Structural Resilience (Drag Reduction)
-Standard cubic grids suffer from "stair-stepping" penalties when flow is not aligned with the axes. The DAT-E6 lattice utilizes a Lattice Cap mechanism—derived from the Golden Ratio—to maintain laminar flow profiles even in turbulent regimes.
+## 🏛 Pillar 1: Structural Resilience (Drag Reduction)
+DAT-E6 utilizes a **Lattice Cap** mechanism derived from the Golden Ratio ($\phi$) to maintain laminar flow profiles.
+* **Validation:** 45° off-axis stress tests show an 86% drag reduction compared to cubic "stair-stepping" grids.
 
-* **Validation:** In 45 degree off-axis stress tests, DAT-E6 maintained a Cd proxy of 0.002, while cubic grids spiked due to geometric anisotropy.
+## 🧠 Pillar 2: Information Efficiency (Topological Resilience)
+Noise is treated as "phason strain," which the lattice actively minimizes toward the golden resonance target.
+* **Validation:** DAT-E6 self-organizes **246x faster** than cubic grids after high-entropy shocks.
 
-## Pillar 2: Information Efficiency (Topological Resilience)
-Using Topological Shannon Entropy, we measure how quickly a system reorganizes itself after a high-entropy shock (noise injection). 
-
-* **Phason Relaxation:** The quasi-lattice treats noise as phason strain, which it actively minimizes toward the golden resonance target.
-* **Results:** DAT-E6 self-organizes **246.48x faster** than cubic grids, preventing the propagation of computational chaos and numerical divergence.
-
----
-
-## Installation and Usage
-
-\`\`\`bash
-git clone https://github.com/SolomonB14D3/DAT-E6-Resilience.git
-cd DAT-E6-Resilience
-pip install -r requirements.txt
-\`\`\`
-
-### Run Validations
-To reproduce the Pillar 2 resilience metrics:
-\`\`\`bash
-python simulations/entropy_efficiency_test.py
-\`\`\`
+## ⚖️ Pillar 3: Phase-Space Scaling (Phason Slip Dynamics)
+DAT-E6 manages computational overhead through discrete **Phason Slips** (threshold $\approx 0.86$). 
+* **Validation:** Scaling analysis confirms a **sub-linear energy cost** for structural re-indexing, allowing for massive grid density without proportional increases in numerical instability.
 
 ---
 
-## Visual Proof
+## 📈 Visual Proof
 ![Pillar 2 Resilience](plots/pillar2_resilience_validation.png)
-
-*Figure: The rapid decay of topological entropy in DAT-E6 (Gold) vs the stalled recovery of Cubic grids (Black) following a system shock.*
+*Figure: The rapid decay of topological entropy in DAT-E6 (Gold) vs Cubic grids (Black).*
 
 ---
 **License:** MIT  
