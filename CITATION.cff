@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Bryan"
+  given-names: "Solomon"
+title: "DAT-E6-Resilience: Quasi-Lattice Fluid Dynamics Framework"
+version: 1.0.0
+date-released: 2025-12-26
+url: "https://github.com/SolomonB14D3/DAT-E6-Resilience"
