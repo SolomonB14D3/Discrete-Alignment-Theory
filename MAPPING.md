@@ -1,14 +1,12 @@
-# 🔗 DAT 2.0 Manuscript-to-Repository Mapping
+# 🔗 DAT 2.0 Manuscript-to-Repository Mapping Table
+As referenced in the "Data Availability Statement," this table facilitates independent peer verification.
 
-This table maps the figures and claims in the DAT 2.0 Manuscript to the corresponding computational evidence in this repository.
-
-| Manuscript Element | Theoretical Pillar | Repository Source / Script | Data Artifact |
-| :--- | :--- | :--- | :--- |
-| **Figure 1**: Vorticity Cap | Pillar 1: Regularity | `simulations/vorticity_test.py` | `data/pillar1/` |
-| **Figure 2**: Beta Jumps | Pillar 2: Memory | `scripts/generate_figure2_entropy.py` | `VALIDATION_REPORT.txt` |
-| **Figure 3**: Scaling Law | Pillar 3: Entropy | `notebooks/density_hypothesis.py` | `plots/pillar3_scaling_law.png` |
-| **Figure 4**: Leakage | Pillar 4: Mirroring | `simulations/thermal_conductivity_bench.py` | `data/THERMAL_LOCALIZATION_MAP.json` |
-| **Figure 5**: Plasma Ext. | Extensions | `simulations/dat_extensions.py` | `data/dat_extensions_simulations.csv` |
-| **Appendix F**: Recovery | Pillar 2: Realignment| `core/dat_universal_engine.py` | N/A |
-| **Appendix G**: Thermal | Pillar 4: Localization| `data/THERMAL_LOCALIZATION_MAP.json` | JSON Schema |
+| Manuscript Claim | Pillar | Verification Artifact |
+| :--- | :--- | :--- |
+| **Vorticity Cap ($\delta_0 \approx 0.309$)** | Pillar 1 | `data/DEPLETION_CONSTANT_VALIDATION.csv` |
+| **86% Drag Reduction** | Pillar 1 | `simulations/icosahedral_airfoil_sim.py` |
+| **246x Faster Recovery** | Pillar 2 | `scripts/generate_figure2_entropy.py` |
+| **313 Phason Flips** | Pillar 2 | `data/PHASON_STRAIN_ENERGY_LOG.csv` |
+| **Sub-linear Scaling** | Pillar 3 | `data/PHASON_SLIP_SCALING.csv` |
+| **99.60% Thermal Mirroring** | Pillar 4 | `data/THERMAL_LOCALIZATION_MAP.json` |
 
