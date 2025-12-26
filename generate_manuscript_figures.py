@@ -3,57 +3,68 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-# Set professional plotting style
-try:
-    plt.style.use('seaborn-v0_8-whitegrid')
-except:
-    plt.style.use('ggplot')
+# --- STYLE CONFIGURATION ---
+plt.rcParams.update({
+    "font.family": "serif",
+    "font.size": 10,
+    "axes.titlesize": 12,
+    "axes.labelsize": 10,
+    "figure.dpi": 300
+})
+sns.set_palette("viridis")
 
-fig, axes = plt.subplots(2, 2, figsize=(16, 12))
-plt.subplots_adjust(hspace=0.3, wspace=0.3)
+def create_dashboard():
+    fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+    plt.subplots_adjust(hspace=0.3, wspace=0.25)
 
-# --- Panel A: Pillar 1 (Stability Divergence) ---
-if os.path.exists("data/pillar1/stability_trace.csv"):
-    df1 = pd.read_csv("data/pillar1/stability_trace.csv")
-    sns.lineplot(data=df1, x="step", y="max_vel", hue="mode", ax=axes[0,0], palette="magma")
-    axes[0,0].set_title("A: Structural Stability (Step 195 Collapse)", fontsize=14)
-    axes[0,0].set_yscale('log')
-else:
-    axes[0,0].text(0.5, 0.5, 'Pillar 1 Data Missing', ha='center')
+    # Panel A: Global Regularity (Vorticity Bounding)
+    p1 = "data/pillar1/DEPLETION_CONSTANT_VALIDATION.csv"
+    if os.path.exists(p1):
+        df = pd.read_csv(p1)
+        re_max = df['Re'].max()
+        subset = df[df['Re'] == re_max]
+        axes[0, 0].plot(subset['step'], subset['quasi_omega'], label='DAT-E6', color='teal', lw=2)
+        axes[0, 0].plot(subset['step'], subset['cubic_omega'], label='Cubic', color='crimson', ls='--', alpha=0.7)
+        axes[0, 0].set_title(f"A: Global Regularity (Re={re_max:.0e})")
+        axes[0, 0].set_ylabel(r"Max Vorticity ($\omega_{max}$)")
+        axes[0, 0].legend()
+    
+    # Panel B: Information Efficiency (Shannon Entropy)
+    p2 = "data/pillar2/entropy_results.csv"
+    if os.path.exists(p2):
+        df = pd.read_csv(p2)
+        sns.barplot(data=df, x='metric', y='quasi', ax=axes[0, 1], color='teal', label='DAT-E6')
+        sns.barplot(data=df, x='metric', y='cubic', ax=axes[0, 1], color='silver', alpha=0.5, label='Cubic')
+        axes[0, 1].set_title("B: Information Efficiency")
+        axes[0, 1].set_ylabel("Entropy (Bits)")
 
-# --- Panel B: Pillar 2 (Efficiency Gain) ---
-if os.path.exists("data/pillar2/entropy_results.csv"):
-    df2 = pd.read_csv("data/pillar2/entropy_results.csv")
-    # Using 'quasi' and 'cubic' columns from your Pillar 2 logic
-    gain_row = df2[df2['metric'] == 'Entropy_Reduction_Pct']
-    if not gain_row.empty:
-        gain = gain_row['quasi'].values[0]
-        sns.barplot(x=["Cubic Grid", "DAT-E6"], y=[100, 100-gain], ax=axes[0,1], palette="viridis")
-        axes[0,1].set_title(f"B: Information Efficiency ({gain:.1f}% Improvement)", fontsize=14)
-    else:
-        # Fallback if Percent row isn't there yet
-        quasi_e = df2.loc[df2['metric'] == 'Shannon_Entropy', 'quasi'].values[0]
-        cubic_e = df2.loc[df2['metric'] == 'Shannon_Entropy', 'cubic'].values[0]
-        gain = ((cubic_e - quasi_e) / cubic_e) * 100
-        sns.barplot(x=["Cubic Grid", "DAT-E6"], y=[cubic_e, quasi_e], ax=axes[0,1], palette="viridis")
-        axes[0,1].set_title(f"B: Information Entropy ({gain:.1f}% Reduction)", fontsize=14)
-    axes[0,1].set_ylabel("Relative Information Entropy (%)")
+    # Panel C: Symmetry Resonance (Symmetry Sweep)
+    p3 = "data/pillar3/symmetry_scaling_data.csv"
+    if os.path.exists(p3):
+        df = pd.read_csv(p3)
+        axes[1, 0].plot(df['n'], df['align_mean'], '-o', color='darkblue', markersize=4)
+        axes[1, 0].axvline(5625, color='orange', ls=':', label=r'$\delta_0$ Singularity')
+        axes[1, 0].set_title("C: Symmetry Resonance Scaling")
+        axes[1, 0].set_xlabel(r"Symmetry Order ($n$)")
+        axes[1, 0].set_ylabel("Field Alignment")
 
-# --- Panel C: Pillar 3 (Symmetry Resonances) ---
-if os.path.exists("data/pillar3/symmetry_scaling_data.csv"):
-    df3 = pd.read_csv("data/pillar3/symmetry_scaling_data.csv").sort_values("n")
-    axes[1,0].errorbar(df3['n'], df3['align_mean'], yerr=df3['align_std'], fmt='o-', color='crimson', markersize=4, capsize=2)
-    axes[1,0].set_xscale('log')
-    axes[1,0].set_title("C: Symmetry Resonances (Recursive Sweep)", fontsize=14)
-    axes[1,0].set_xlabel("Symmetry Order (n)")
+    # Panel D: Resilience (Phononic Mirror / IPR)
+    p4 = "data/pillar4/thermal_reflection_results.csv"
+    if os.path.exists(p4):
+        df = pd.read_csv(p4)
+        # Handle dynamic column naming for Pillar 4
+        x_col = 'frequency' if 'frequency' in df.columns else df.columns[0]
+        y_col = 'IPR' if 'IPR' in df.columns else df.columns[1]
+        
+        sns.lineplot(data=df, x=x_col, y=y_col, hue='lattice' if 'lattice' in df.columns else None, ax=axes[1, 1])
+        axes[1, 1].set_title("D: Phononic Mirror Resilience")
+        axes[1, 1].set_ylabel("IPR (Localization)")
+        axes[1, 1].set_xlabel("Frequency (Hz)")
 
-# --- Panel D: Pillar 4 (Resilience Mirror) ---
-if os.path.exists("data/pillar4/thermal_reflection_results.csv"):
-    df4 = pd.read_csv("data/pillar4/thermal_reflection_results.csv")
-    df4_melt = df4[df4['metric'] != 'Transmission_Loss_dB']
-    sns.barplot(data=df4_melt.melt(id_vars='metric'), x='metric', y='value', hue='variable', ax=axes[1,1])
-    axes[1,1].set_title("D: Resilience & Energy Localization (IPR)", fontsize=14)
+    plt.tight_layout()
+    os.makedirs("plots", exist_ok=True)
+    plt.savefig("plots/master_manuscript_dashboard.png")
+    print("✅ Master Dashboard generated: plots/master_manuscript_dashboard.png")
 
-os.makedirs("plots", exist_ok=True)
-plt.savefig("plots/master_manuscript_dashboard.png", dpi=300)
-print("Master Dashboard generated: plots/master_manuscript_dashboard.png")
+if __name__ == "__main__":
+    create_dashboard()
