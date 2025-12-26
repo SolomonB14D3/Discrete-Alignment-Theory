@@ -1,0 +1,57 @@
+\textbf{Pillar 2: Topological Resilience and Geometric Memory}
+
+3D disorder (β ≈ 0.91) triggers spontaneous self-healing via the "Golden
+Attractor," realigning with 6D templates. This redefines material
+"impossibility": Catastrophic melting requires no external energy for
+recovery, as the 6D lattice exerts topological force.
+
+Evidence: Simulations in generate\_figure2\_entropy.py show β jumps from
+chaotic 0.9097 to golden resonance 1.734, minimizing phason strain
+E\_\{phason\} = \textbackslash sum
+\textbar\textbar x\_i\^{}\textbackslash perp\textbar\textbar\^{}2 in r=7
+windows; counts 313 discrete phason flips during snap-back
+(ENTROPY\_EFFICIENCY\_VALIDATION.csv). Entropy decay is 246x faster than
+cubic grids, confirming 20.5\% efficiency gain.
+
+\textbf{Pillar 3: Scaling Laws, Depletion Constant, and Entropy Delay}
+chaos-to-recovery (313 phason flips), validating Pillar 2.
+
+II. Advanced Simulation Scripts (simulations/)
+
+navier\_stokes\_lattice\_cap.py: Demonstrates bounded vorticity on n=12
+lattices vs. standard grids, verifying Pillar 1.
+
+icosahedral\_airfoil\_sim.py: Implements low-drag wing (Cd ≈
+0.002--0.005, 80\% reduction), tying to Pillar 1.
+
+phason\_slip\_detector.py: Analyzes phason slips (deviations ≈ 0.86),
+supporting Pillar 3.
+from dat\_universal\_engine.py (Pillar 2).
+
+appendix\_g\_thermal.tex: Thermal parameters (T\_source = 1000°C,
+Anderson localization), with bandgap plots (Pillar 4).
+
+IV. Manuscript Source and Reproducibility Tools (manuscript/)
+
+dat\_manuscript.tex: Full LaTeX source with integrated pillars, figures
+(e.g.,
+\textbackslash includegraphics\{DAT\_3.0\_Phase\_Comparison.pdf\}), and
+citations.
+
+dat\_manuscript.pdf: Compiled draft.
+
+validate\_results.py: Recomputes metrics (β jumps, δ₀) from CSVs for
+verification.
+
+run\_all\_sims.sh: Bash script executing sweeps and generating
+figures/logs.
+
+dockerfile: Containerizes environment for reproducibility.
+
+V. Interactive Notebooks (notebooks/)
+
+e6\_resilience.ipynb: Replicates E6 simulations (β from 0.91 to 1.73),
+with inline plots (Pillar 2).
+
+density\_hypothesis.ipynb: Compares β peaks across lattices, validating
+scaling with kissing numbers (Pillar 3).
