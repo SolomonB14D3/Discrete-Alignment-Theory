@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/1122449846.svg)](https://doi.org/10.5281/zenodo.18051097)
 # DAT-E6: Resilient Low-Drag Quasicrystalline Lattices
 **Pillar 1: Structural | Pillar 2: Information | Pillar 3: Scaling**
 
