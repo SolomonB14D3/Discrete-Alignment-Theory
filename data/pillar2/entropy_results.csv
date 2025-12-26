@@ -1,3 +1,4 @@
 metric,quasi,cubic
-Shannon_Entropy,4.711419105529785,5.914957523345947
-Point_Count,10000.0,10000.0
+Shannon_Entropy,5.542734622955322,6.974639892578125
+Entropy_Reduction_Pct,20.530167745958128,0.0
+Point_Count,50000.0,50000.0

@@ -1,3 +1,4 @@
 metric,quasi,cubic
-Localization_IPR,0.00016478965699207038,0.00015914883988443762
-Mirror_Strength_Percent,3.5443658127103235,0.0
+Reflection_Coeff,1.0,1.0
+IPR_Localization,0.012945895083248615,0.0447748601436615
+Transmission_Loss_dB,-100.0,-100.0
