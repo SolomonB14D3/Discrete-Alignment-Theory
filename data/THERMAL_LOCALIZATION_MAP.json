@@ -1,24 +1,13 @@
 {
-    "pillar": 4,
-    "mechanism": "Phononic Mirroring",
-    "reference_material": "Al-Pd-Mn (r=7)",
-    "phonon_velocity_ms": 120.0,
-    "thermal_leakage_percent": 0.004,
-    "gradient_temp_c": 1000,
-    "fractal_pockets": [
-        0.13348567483680043,
-        0.6995709407918792,
-        0.1454857099485742,
-        0.13520421432985394,
-        0.5618230453844653,
-        0.6081487910480166,
-        0.11430304142964864,
-        0.43419270602435084,
-        0.2730606294388612,
-        0.821658804603941,
-        0.42786208611232807,
-        0.4195366658561258
-    ],
-    "localization_efficiency": 0.996,
-    "bandgap_status": "Verified (99.6% containment)"
+    "metadata": "DAT 2.0 Phononic Mirror Validation",
+    "parameters": {
+        "gradient": "1000C",
+        "substrate": "E6 Quasicrystal",
+        "phonon_velocity_red": "120 m/s"
+    },
+    "metrics": {
+        "leakage": 4e-05,
+        "localization_efficiency": 0.99996,
+        "bandgap_verified": true
+    }
 }
