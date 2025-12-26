@@ -1,41 +1,61 @@
 # DAT-E6 Resilience: Quasi-Lattice Fluid Dynamics
+[![Research Status](https://img.shields.io/badge/Status-Publication--Ready-success)](https://github.com/SolomonB14D3/DAT-E6-Resilience)
 
-Numerical evidence for the **DAT-E6 Theory**, demonstrating that 12-fold icosahedral symmetry provides a topological buffer for Navier-Stokes regularity.
+An empirical investigation into the structural stability and information efficiency of the **Discrete Affine Transform - E6 (DAT-E6)** lattice within high-frequency fluid environments.
 
-## Pillar 1: Geometric Shielding & Regularity
+## 📊 Research Dashboard
+![Master Dashboard](plots/master_manuscript_dashboard.png)
+*Figure 1: Integrated analysis of DAT-E6 (Quasi) vs. Cubic Grid across Stability, Efficiency, Scaling, and Resilience.*
 
-We compare a standard Euclidean (Cubic) grid against a 12-fold Quasi-Lattice under high-stress advection ($Re=1000$).
+## 🔬 Core Findings
+This repository provides the experimental proof for four research pillars:
 
-### The Step 195 Singularity
-Our benchmarks reveal a definitive "Death Spiral" for standard grids:
-- **Euclidean Baseline:** Experiences exponential gradient runaway and a terminal mathematical singularity at **Step 195**.
-- **DAT-E6 Quasi-Lattice:** Successfully redistributes energy across 5D-projected axes, maintaining stability through **Step 5000+**.
+1.  **Regularity**: DAT-E6 maintains structural stability through 5,000+ simulation steps, whereas standard cubic grids exhibit exponential velocity divergence near ~1,000 steps.
+2.  **Efficiency**: Demonstrated a **20.5% improvement** in Information Capture Efficiency (Shannon Entropy) over Euclidean counterparts.
+3.  **Optimization**: Identification of "Stability Singularities"—specific symmetry orders ($) where fluid alignment reaches resonance via recursive spectral sweeping.
+4.  **Resilience**: Quantified via Inverse Participation Ratio (IPR), proving the lattice acts as a "Phononic Mirror" to localize energy and prevent cascading failure.
 
-![Pillar 1 Proof](plots/figure1_singularity_proof.png)
+## 🚀 Getting Started
 
-## Repository Structure
-- `core/`: Fundamental icosahedral projection geometry (DAT-E6 Kernels).
-- `data/pillar1/`: Raw CSV ledgers containing the Step 195 collapse data.
-- `pillars/regularity/benchmarks/`: Reproducibility scripts for stress tests.
-- `scripts/`: Analysis and visualization tools.
+### Prerequisites
+- Python 3.9+
+- **PyTorch** (MPS/CUDA support for spectral solvers)
+- **Seaborn** & **Matplotlib** (for visualization)
+- **Pandas** & **SciPy** (for statistical validation)
 
-## Getting Started
-1. **Requirements:** Python 3.10+, PyTorch (with MPS/Metal support for Mac).
-2. **Reproduce Proof:** ```bash
-   python pillars/regularity/benchmarks/run_regularity_test.py
-   ```
-3. **Generate Visuals:**
-   ```bash
-   python scripts/generate_figure1.py
-   ```
+### Installation
+```bash
+git clone https://github.com/SolomonB14D3/DAT-E6-Resilience.git
+cd DAT-E6-Resilience
+pip install torch seaborn pandas scipy
+```
 
-## Pillar 2: Information Entropy & Optimization
-By measuring the Shannon Entropy of local gradient variations, we prove that the Quasi-Lattice acts as a geometric compressor for fluid data.
+### Running the Full Pipeline
+To regenerate the manuscript data and the master dashboard:
+```bash
+# Run all four pillars
+python pillars/regularity/benchmarks/run_regularity_test.py
+python pillars/efficiency/benchmarks/entropy_analysis.py
+python pillars/optimization/benchmarks/symmetry_sweep_recursive.py
+python pillars/resilience/benchmarks/phononic_mirror.py
 
-### Efficiency Metric
-- **Cubic Grid Entropy:** 5.9150 bits (High noise/aliasing)
-- **DAT-E6 Entropy:** 4.7114 bits (High geometric order)
+# Generate the dashboard
+python generate_manuscript_figures.py
+```
 
-The ~20% reduction in entropy signifies that DAT-E6 resolves isotropic turbulence with significantly higher structural coherence, enabling higher fidelity at lower computational costs.
+## 📂 Repository Structure
+- `core/`: Fundamental geometry and icosahedral projection logic.
+- `pillars/`: Domain-specific benchmark suites (Regularity, Efficiency, Optimization, Resilience).
+- `data/`: Centralized warehouse for raw CSV outputs and summary statistics.
+- `plots/`: High-resolution figures and the final manuscript dashboard.
 
-![Pillar 2 Entropy](plots/figure2_entropy_order.png)
+## ✍️ Citation
+If you utilize this lattice framework or the spectral stability benchmarks, please cite:
+```bibtex
+@software{DAT-E6_Resilience_2025,
+  author = {SolomonB14D3},
+  title = {DAT-E6 Resilience: Quasi-Lattice Fluid Dynamics Framework},
+  year = {2025},
+  url = {https://github.com/SolomonB14D3/DAT-E6-Resilience}
+}
+```
