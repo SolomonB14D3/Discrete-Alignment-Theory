@@ -30,7 +30,7 @@ DAT-E6 manages computational overhead through discrete **Phason Slips** (thresho
 ---
 
 ## 📈 Visual Proof
-![Pillar 2 Resilience](plots/pillar2_resilience_validation.png)
+![DAT-E6 Master Validation](plots/master_dashboard.png)
 *Figure: The rapid decay of topological entropy in DAT-E6 (Gold) vs Cubic grids (Black).*
 
 ---
