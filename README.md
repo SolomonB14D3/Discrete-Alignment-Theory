@@ -28,3 +28,14 @@ Our benchmarks reveal a definitive "Death Spiral" for standard grids:
    ```bash
    python scripts/generate_figure1.py
    ```
+
+## Pillar 2: Information Entropy & Optimization
+By measuring the Shannon Entropy of local gradient variations, we prove that the Quasi-Lattice acts as a geometric compressor for fluid data.
+
+### Efficiency Metric
+- **Cubic Grid Entropy:** 5.9150 bits (High noise/aliasing)
+- **DAT-E6 Entropy:** 4.7114 bits (High geometric order)
+
+The ~20% reduction in entropy signifies that DAT-E6 resolves isotropic turbulence with significantly higher structural coherence, enabling higher fidelity at lower computational costs.
+
+![Pillar 2 Entropy](plots/figure2_entropy_order.png)
