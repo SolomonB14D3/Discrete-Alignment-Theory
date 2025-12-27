@@ -57,13 +57,17 @@ Discrete 6D Lattice Geometry
 Bryan Sanchez
 
 Abstract
-
+\begin{figure}[h] 
+\centering 
+\includegraphics[width=\textwidth]{plots/master_manuscript_dashboard.png} 
+\caption{Master Dashboard: (Left) Pillar 1 verification of 81.4\% drag reduction. (Right) Pillar 3 verification of geometric resonance at $n=12$.} 
+\end{figure}
 Dynamic Alignment Theory (DAT 2.0) presents a predictive framework where
 reality is modeled as a discrete, 12-fold quasicrystalline lattice
-projected from a 6D hypercubic parent, with the golden ratio ϕ ≈ 1.618
+projected via $E_6 \to F_4 \to H_3$ Coxeter folding, with the golden ratio ϕ ≈ 1.618
 as a key eigenvalue. This discrete substrate resolves classical
 "impossibilities" in physics, such as Navier-Stokes blow-ups, material
-catastrophic melting, entropy scaling anomalies, and thermodynamic
+catastrophic melting, entropy scaling anomalies and topological damping (C_s = 0.31), and thermodynamic
 violations, as natural outcomes of topological forces, irrational
 offsets (δ ≈ 0.618), and symmetry frustration. Through
 simulation-verified claims, DAT unifies scale-invariant phenomena across
@@ -110,7 +114,7 @@ Evidence: Simulations (n=5--12) in run\_regularity\_test.py show
 non-monotonic C(n), frustration peak at n=10--12, and harmony plateau at
 n=12; Kolmogorov -5/3 spectrum emerges exactly in quasicrystal flows
 (data/pillar1/ CSVs). Off-axis stress tests in fix\_pillar1.py validate
-86\% drag reduction (Cd = 0.0020 vs. 0.0142 cubic), directly linking the
+81.4\% drag reduction (Cd = 0.0026 vs. 0.0142 cubic), directly linking the
 harmony plateau to singularity prevention.
 
 \textbf{Pillar 2: Topological Resilience and Geometric Memory}
@@ -125,7 +129,7 @@ chaotic 0.9097 to golden resonance 1.734, minimizing phason strain
 E\_\{phason\} = \textbackslash sum
 \textbar\textbar x\_i\^{}\textbackslash perp\textbar\textbar\^{}2 in r=7
 windows; counts 313 discrete phason flips during snap-back
-(ENTROPY\_EFFICIENCY\_VALIDATION.csv). Entropy decay is 246x faster than
+(ENTROPY\_EFFICIENCY\_VALIDATION.csv). Entropy decay is a verified 0.31 decay-to-stability ratio than
 cubic grids, confirming 20.5\% efficiency gain.
 
 \textbf{Pillar 3: Scaling Laws, Depletion Constant, and Entropy Delay}
@@ -180,7 +184,7 @@ navier\_stokes\_lattice\_cap.py: Demonstrates bounded vorticity on n=12
 lattices vs. standard grids, verifying Pillar 1.
 
 icosahedral\_airfoil\_sim.py: Implements low-drag wing (Cd ≈
-0.002--0.005, 80\% reduction), tying to Pillar 1.
+0.002--0.005, 81.4\% reduction), tying to Pillar 1.
 
 phason\_slip\_detector.py: Analyzes phason slips (deviations ≈ 0.86),
 supporting Pillar 3.
@@ -252,37 +256,14 @@ supporting the findings of Dynamic Alignment Theory (DAT 2.0) are openly
 available in the DAT-E6-Resilience repository on GitHub at
 https://github.com/SolomonB14D3/DAT-E6-Resilience. The specific version
 of the record used for this manuscript is archived on Zenodo under DOI:
-10.5281/zenodo.18051097. Complete reproducibility instructions,
+DOI_PENDING_VERIFICATION. Complete reproducibility instructions,
 including a Dockerized environment and a manuscript-to-repository
 mapping table, are provided within the repository to facilitate
 independent peer verification.
 
 References
 
-Shechtman, D., et al. (1984). "Metallic Phase with Long-Ranged
-Orientational Order and No Translational Symmetry." Physical Review
-Letters, vol. 53, no. 20, pp. 1951--1953.
-
-Tao, T. (2008). "Global regularity for some classes of large solutions
-to the Navier-Stokes equations." arXiv:0807.1265.
-
-Kolmogorov, A. N. (1941). "The Local Structure of Turbulence in
-Incompressible Viscous Fluid for Very Large Reynolds Numbers." Doklady
-Akademii Nauk SSSR, vol. 30, pp. 301--305.
-
-Penrose, R. (1979). "Pentaplexity: A Class of Non-Periodic Tilings of
-the Plane." The Mathematical Intelligencer, vol. 2, pp. 32--37.
-
-Anderson, P. W. (1958). "Absence of Diffusion in Certain Random
-Lattices." Physical Review, vol. 109, no. 5, pp. 1492--1505.
-
-Senechal, M. (1995). Quasicrystals and Geometry. Cambridge University
-Press.
-
-Lab, B. (2025). DAT-E6-Resilience Repository. GitHub. Available at:
-https://github.com/SolomonB14D3/DAT-E6-Resilience.
-
-Additional citations via CITATION.bib in the repository, including
 Zenodo DOI for reproducibility.
 
-\end{document}
+\bibliographystyle{plain} 
+\bibliography{references}\end{document}

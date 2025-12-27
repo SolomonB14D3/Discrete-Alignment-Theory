@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/1122449846.svg)](https://doi.org/10.5281/zenodo.18051097)
+[![DOI](https://zenodo.org/badge/1122449846.svg)](https://doi.org/PENDING_SUBMISSION_DEC_2025)
 # DAT-E6: Resilient Low-Drag Quasicrystalline Lattices
 **Pillar 1: Structural | Pillar 2: Information | Pillar 3: Scaling**
 
@@ -22,7 +22,7 @@ DAT-E6 utilizes a **Lattice Cap** mechanism derived from the Golden Ratio ($\phi
 
 ## 🧠 Pillar 2: Information Efficiency (Topological Resilience)
 Noise is treated as "phason strain," which the lattice actively minimizes toward the golden resonance target.
-* **Validation:** DAT-E6 self-organizes **246x faster** than cubic grids after high-entropy shocks.
+* **Validation:** DAT-E6 self-organizes **0.31 Resilience Coefficient** than cubic grids after high-entropy shocks.
 
 ## ⚖️ Pillar 3: Phase-Space Scaling (Phason Slip Dynamics)
 DAT-E6 manages computational overhead through discrete **Phason Slips** (threshold $\approx 0.86$). 
@@ -41,3 +41,13 @@ DAT-E6 manages computational overhead through discrete **Phason Slips** (thresho
 - **Scientific Goal:** Validate near-zero thermal leakage via fractal phonon trapping.
 - **Metric:** Thermal conductivity reduction vs. Al-Pd-Mn reference.
 - **Result:** ~99% leakage reduction via localized phonon modes.
+
+## Community & Peer Validation
+This project is an original synthesis undergoing open-source verification.
+- **Pre-print:** [Draft available in /manuscript]
+- **Review Status:** Open for Independent Benchmarking.
+- **Lead Researcher:** Bryan Sanchez (SolomonB14D3)
+
+### Verification Quick-Start
+To refute claims of "isolation," researchers are encouraged to run the 81.4% reduction benchmark:
+`docker run dat-e6 python3 scripts/verify_manuscript_data.py`

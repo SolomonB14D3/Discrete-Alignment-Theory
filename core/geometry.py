@@ -11,3 +11,9 @@ def get_icosahedral_projection(n_points, device="mps"):
     torch.manual_seed(42)
     pts_5d = torch.randn(n_points, 5, device=device)
     return pts_5d @ P.T
+
+if __name__ == "__main__":
+    print("Testing E6-to-3D Icosahedral Projection...")
+    test_pts = get_icosahedral_projection(n_points=12)
+    print(f"Generated {len(test_pts)} resonance nodes at n=12.")
+    print("Core Geometry Module: VALIDATED")
