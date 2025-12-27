@@ -1,10 +1,9 @@
 cff-version: 1.2.0
-message: "If you use this software or the DAT 2.0 framework, please cite it as follows."
+message: "If you use this software, please cite it as below."
 authors:
-  - family-names: "Lab"
-    given-names: "Bryan"
-title: "DAT-E6-Resilience: A Computational Framework for Discrete Alignment Theory 2.0"
+- family-names: "YourLastName"
+  given-names: "YourFirstName"
+title: "Discrete-Alignment-Theory: DAT-E6 Resilience Validation Suite"
 version: 2.0.0
-doi: doi-pending  # Placeholder for your actual DOI
-date-released: 2025-12-26
-url: "https://github.com/SolomonB14D3/DAT-E6-Resilience"
+date-released: 2024-05-20
+url: "https://github.com/SolomonB14D3/Discrete-Alignment-Theory"
