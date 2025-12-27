@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/1122449846.svg)](https://doi.org/PENDING_SUBMISSION_DEC_2025)
+# DAT-E6: Discrete Alignment Theory (DAT 2.0)
 # DAT-E6: Resilient Low-Drag Quasicrystalline Lattices
 **Pillar 1: Structural | Pillar 2: Information | Pillar 3: Scaling**
 
