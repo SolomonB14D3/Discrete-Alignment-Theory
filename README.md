@@ -34,7 +34,7 @@ git clone https://github.com/SolomonB14D3/Discrete-Alignment-Theory.git
 cd Discrete-Alignment-Theory
 pip install -r requirements.txt
 
-# Run verification
+# Run thermal localization verification (Pillar 4)
 python pillar4_thermal_diagnostic.py
 
 # Docker verification (optional)
@@ -76,13 +76,52 @@ $$\mathcal{A} \leq 1 - \delta_0 = \frac{5 - \sqrt{5}}{4} \approx 0.691$$
 
 Under high Reynolds numbers (Re=1000), the DAT manifold maintains 81.4% reduction in turbulent intensity compared to cubic discretization.
 
-## Related Repositories
+---
 
-| Repository | Relationship |
-|------------|--------------|
-| [navier-stokes-h3](https://github.com/SolomonB14D3/navier-stokes-h3) | NS regularity proof using δ₀ depletion |
-| [H3-Hybrid-Discovery](https://github.com/SolomonB14D3/H3-Hybrid-Discovery) | Physical MD validation of H₃ phase |
-| [dat-ml](https://github.com/SolomonB14D3/dat-ml) | PyTorch spectral layer implementation |
+## How DAT Connects to the Ecosystem
+
+### From Lie Algebra to Physics
+
+```
+E₆ Lie Algebra (72 roots)
+    ↓ Z₂ outer automorphism
+F₄ intermediate
+    ↓ Coxeter projection
+H₃ Icosahedral Manifold
+    ↓
+┌───────────────────────────────────────────────────┐
+│                    δ₀ = (√5-1)/4                  │
+└───────────────────────────────────────────────────┘
+    ↓                   ↓                    ↓
+Phason Slip      Vortex Depletion     Phonon Scattering
+(Pillar 6)       (NS Regularity)      (Thermal Diode)
+    ↓                   ↓                    ↓
+Bond reconfig.   Bounded enstrophy    76.7% DOS asymmetry
+```
+
+### Cross-Repository Connections
+
+| This Repo (DAT) | Provides | To |
+|-----------------|----------|-----|
+| E₆ → H₃ projection | δ₀ derivation | [navier-stokes-h3](https://github.com/SolomonB14D3/navier-stokes-h3) |
+| Phason dynamics | Topological switching | [H3-Hybrid-Discovery](https://github.com/SolomonB14D3/H3-Hybrid-Discovery) |
+| Resonance lock (β=1.734) | φ-frequency filtering | [dat-ml](https://github.com/SolomonB14D3/dat-ml) |
+
+### The Unified δ₀ Picture
+
+| Domain | How δ₀ Manifests | Measured Value |
+|--------|------------------|----------------|
+| **Fluid Dynamics** | Vortex stretching cap | 0.31 (crisis regime) |
+| **Solid Mechanics** | Cluster ratio ≈ φ | 1.62 / φ = 1.001 |
+| **Thermal Transport** | Phonon DOS asymmetry | 76.7% |
+| **ML Spectral** | σ × δ₀ = 1.081 | Matches H₃ coordination |
+
+**Key insight**: DAT provides the theoretical foundation (E₆ → H₃ folding) that explains why icosahedral geometry appears in:
+- Turbulence regularization (NS)
+- Metastable phase formation (H3-Hybrid)
+- Spectral filtering (dat-ml)
+
+---
 
 ## Performance Summary
 
