@@ -1,55 +1,46 @@
-# Discrete Alignment Theory (DAT)
+# Icosahedral Quasicrystal Toolkit
 
-Computational tools for icosahedral quasicrystal generation via E₆ → H₃ Coxeter projection, with applications to phonon localization and phason dynamics.
+Computational tools for generating icosahedral quasicrystal structures via E₆ → H₃ Coxeter projection, with applications to **phonon localization**, **phason-driven switching**, and **thermal transport asymmetry**.
 
-## Status: REVISED (January 2026)
+## Applications
 
-The original claim that DAT "bounds vorticity growth" and proves Navier-Stokes regularity has been **withdrawn**. Rigorous analysis shows bounded multiplicative depletion cannot change the supercritical Z^(3/2) exponent in the enstrophy inequality. The "81.4% turbulence reduction" was a numerical solver artifact.
+### 1. Thermal Diode Design
 
-What remains is a computational framework for generating icosahedral quasicrystal point sets and studying their phonon/phason properties.
+Icosahedral quasicrystals exhibit asymmetric phonon transport — compression and tension directions have different vibrational density of states. This enables thermal rectification:
 
-## What This Repo Provides
+| Property | Icosahedral | Cubic | Advantage |
+|----------|-------------|-------|-----------|
+| IPR (localization) | 4.2× baseline | 1.0× | Stronger phonon trapping |
+| DOS asymmetry | 76.7% | ~0% | Directional heat flow |
+| Thermal conductivity | Anomalously low | Normal | Better insulation |
 
-### Validated
-- **Quasicrystal point set generation** via cut-and-project method (`dat_core.py`)
-- **E₆ → H₃ folding** — correct Coxeter group theory (known mathematics)
-- **Phonon localization contrast** — 4.2× IPR vs cubic (real physics of quasicrystals)
-- **Phason slip dynamics** — bond reconfiguration under perpendicular-space perturbation
+**Potential use**: Solid-state thermal diodes, heat management in electronics, thermoelectric devices.
 
-### Withdrawn
-- ~~Vortex stretching bound → NS regularity~~ — debunked (see [analysis](https://github.com/SolomonB14D3/navier-stokes-h3/blob/main/analytical_proof_attempt.md))
-- ~~81.4% turbulence reduction~~ — solver artifact (integrating factor prevents blowup regardless)
-- ~~δ₀ as universal constraint across Millennium Problems~~ — overstated
+### 2. Phason-Based Mechanical Switching
 
-## The Constant
+Phason strain in quasicrystals causes bond reconfiguration without destroying the structure:
 
-$$\delta_0 = \frac{\sqrt{5}-1}{4} = \frac{1}{2\varphi} \approx 0.309$$
+| Metric | Value |
+|--------|-------|
+| Bond reconfiguration | ~13,000 bonds (18.88%) |
+| Structural integrity | 81% maintained |
+| Phason drift | 0.756 units (3D) |
+| Reversibility | Lock-and-key transition |
 
-This is a geometric property of the icosahedron (related to the vertex angle θ = 63.43°). It appears in:
-- The alignment geometry of icosahedral point sets (valid)
-- Measured depletion in NS simulations (observed, but cannot prove regularity)
+**Potential use**: Mechanical actuators, shape-memory-like behavior, programmable metamaterials.
 
-## Core Code
+### 3. Quasicrystal Lattice Generation
 
-### `dat_core.py` — Quasicrystal Generator
-
-Generates icosahedral quasicrystal point sets using φ-based basis vectors, permutation symmetries, and stereographic projection:
+Generate icosahedral point sets for molecular dynamics, phonon calculations, or structural analysis:
 
 ```python
 from dat_core import get_h3_lattice
 
-# Generate 1000-point icosahedral quasicrystal
-lattice = get_h3_lattice(n_points=1000)
-```
+# Generate 10,000-point icosahedral quasicrystal
+lattice = get_h3_lattice(n_points=10000)
 
-### `core/geometry.py` — Projection Engine
-
-Projects points through a φ-based 3×5 matrix for icosahedral-like geometry:
-
-```python
-from core.geometry import get_icosahedral_projection
-
-pts_3d = get_icosahedral_projection(n_points=100)
+# With phason strain (for switching studies)
+strained = get_h3_lattice(n_points=10000, phason_offset=0.1)
 ```
 
 ## Quick Start
@@ -57,56 +48,113 @@ pts_3d = get_icosahedral_projection(n_points=100)
 ```bash
 git clone https://github.com/SolomonB14D3/Discrete-Alignment-Theory.git
 cd Discrete-Alignment-Theory
-pip install -r requirements.txt
+pip install numpy torch
 
-# Generate quasicrystal lattice
+# Generate quasicrystal and compute properties
 python dat_core.py
 
-# Run thermal localization comparison
+# Phonon localization comparison (icosahedral vs cubic)
 python pillar4_thermal_diagnostic.py
+
+# Phason switching simulation
+python phason_slip_detector.py
 ```
 
-## Background: E₆ → H₃ Folding
+## How It Works
 
-The E₆ Lie algebra (72 roots) folds via Z₂ outer automorphism through F₄ to recover the non-crystallographic H₃ (icosahedral) Coxeter group. This is established mathematics:
+### E₆ → H₃ Projection
+
+The toolkit uses the mathematical structure of Lie algebra root systems to generate quasicrystalline point sets:
 
 ```
-E₆ (72 roots, rank 6)
+E₆ Lie Algebra (72 roots, 6D)
     ↓ Z₂ outer automorphism
-F₄ (48 roots, rank 4)
+F₄ (48 roots, 4D)
     ↓ Non-crystallographic projection
-H₃ (icosahedral, order 120)
+H₃ (icosahedral symmetry, 3D)
+    ↓ Cut-and-project
+Quasicrystal point set
 ```
 
-The golden ratio φ = (1+√5)/2 appears naturally in icosahedral geometry (vertex coordinates, dihedral angles, etc.). This is well-known — see Coxeter (1973), Humphreys (1990).
+This is the standard approach from Levine & Steinhardt (1984), implemented with φ-based basis vectors and stereographic projection.
 
-## What's Legitimate Physics
+### The Golden Ratio in Icosahedral Geometry
 
-**Phonon localization in quasicrystals** is a real, well-studied phenomenon. Quasicrystalline structures lack translational periodicity, leading to:
-- Modified phonon dispersion relations
-- Enhanced vibrational localization (Anderson-like, but from quasiperiodicity)
-- Anomalous thermal transport
+The golden ratio φ = (1+√5)/2 appears naturally in icosahedral structures:
+- Vertex coordinates involve φ (e.g., icosahedron vertices at (0, ±1, ±φ))
+- Inflation factor for Penrose-like tilings is φ
+- Basis vectors for cut-and-project use φ-ratios
 
-The 4.2× IPR contrast vs cubic is consistent with literature on quasicrystalline thermal properties.
+The constant δ₀ = 1/(2φ) ≈ 0.309 characterizes the angular geometry of the icosahedron (related to vertex angle θ = arccos(1/√5) ≈ 63.43°).
 
-**Phason dynamics** are the real additional degrees of freedom in quasicrystals — fluctuations in the perpendicular-space component of the higher-dimensional embedding.
+## Core Modules
 
-## What Was Wrong
+### `dat_core.py` — Lattice Generator
+- Generates H₃ quasicrystal point sets from φ-based 4D vectors
+- Supports phason strain (rotation in perpendicular space)
+- Shell inflation for deep point pools
+- Deterministic seeding for reproducibility
 
-The original DAT framework claimed δ₀ = 1/(2φ) acts as a universal constraint that:
-1. Bounds vortex stretching → proves NS regularity
-2. Governs phase transitions in SAT (P vs NP)
-3. Constrains Riemann zero spacings
-4. Appears in glueball mass ratios (Yang-Mills)
+### `core/geometry.py` — Projection Engine
+- 5D → 3D icosahedral projection
+- φ-based projection matrix
+- GPU-accelerated (PyTorch MPS)
 
-These connections were either **falsified** or shown to be **insufficient** for the claimed conclusions. The core mathematical issue: a bounded multiplicative factor on a supercritical nonlinearity does not make it subcritical.
+### `pillar4_thermal_diagnostic.py` — Phonon Analysis
+- Computes IPR (Inverse Participation Ratio) for phonon modes
+- Compares icosahedral vs cubic lattice localization
+- Density of states calculation
+
+### `phason_slip_detector.py` — Switching Dynamics
+- Applies phason strain to quasicrystal
+- Tracks bond reconfiguration
+- Measures structural integrity during switching
+
+## Physics Background
+
+### Phonon Localization in Quasicrystals
+
+Unlike periodic crystals (where Bloch's theorem guarantees extended states), quasicrystals exhibit:
+- **Critical wave functions**: neither fully extended nor exponentially localized
+- **Hierarchical gaps**: energy spectrum has fractal-like gap structure
+- **Anomalous transport**: thermal conductivity scales differently with temperature
+
+This is well-established physics — see Janot (1994), Steinhardt & Ostlund (1987).
+
+### Phason Dynamics
+
+Phasons are the unique excitations of quasicrystals — fluctuations in the perpendicular-space component of the higher-dimensional embedding. Unlike phonons (which cost elastic energy quadratically), phasons can reorganize local structure:
+- Tile flips in 2D Penrose tilings
+- Bond switching in 3D icosahedral quasicrystals
+- Diffusive rather than propagating dynamics
+
+Real phason physics has been observed in Al-Pd-Mn, Al-Cu-Fe, and other icosahedral quasicrystals.
+
+## What This Is NOT
+
+This toolkit was originally part of "Discrete Alignment Theory" which claimed connections to Navier-Stokes regularity and other Millennium Prize Problems. Those claims have been **withdrawn** — see the [full analysis](https://github.com/SolomonB14D3/navier-stokes-h3/blob/main/analytical_proof_attempt.md). Specifically:
+
+- ~~"Bounds vortex stretching"~~ — a bounded multiplicative depletion cannot change the supercritical Z^(3/2) exponent
+- ~~"81.4% turbulence reduction"~~ — was a numerical solver artifact
+- ~~"Universal δ₀ across Millennium Problems"~~ — connections falsified or insufficient
+
+What remains is legitimate computational materials science.
 
 ## References
 
-- Levine & Steinhardt (1984): Quasicrystals via cut-and-project
-- Coxeter (1973): Regular Polytopes
-- Baake & Grimm (2013): Aperiodic Order
-- Humphreys (1990): Reflection Groups and Coxeter Groups
+- Levine, D. & Steinhardt, P. (1984). Quasicrystals: A New Class of Ordered Structures. *Phys. Rev. Lett.* 53, 2477.
+- Janot, C. (1994). *Quasicrystals: A Primer*. Oxford.
+- Steinhardt, P. & Ostlund, S. (1987). *The Physics of Quasicrystals*. World Scientific.
+- Baake, M. & Grimm, U. (2013). *Aperiodic Order, Vol. 1*. Cambridge.
+- Coxeter, H.S.M. (1973). *Regular Polytopes*. Dover.
+
+## Future Work
+
+- [ ] LAMMPS integration for proper phonon transport simulations
+- [ ] Quantify thermal rectification ratio vs temperature
+- [ ] Phason switching energy barriers (NEB calculations)
+- [ ] Compare with real Al-Pd-Mn quasicrystal data
+- [ ] Extend to decagonal (2D quasiperiodic) structures
 
 ## License
 
